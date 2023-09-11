@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-ubuntu:jammy
+FROM ghcr.io/chukysoria/baseimage-ubuntu:jammy
 
 # set version label
 ARG BUILD_DATE
@@ -14,9 +14,6 @@ ENV HOME="/config"
 ENV DEBIAN_FRONTEND="noninteractive"
 
 RUN \
-  echo "**** add mono repository ****" && \
-  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
-  echo "deb http://download.mono-project.com/repo/ubuntu stable-focal main" | tee /etc/apt/sources.list.d/mono-official.list && \
   echo "**** install packages ****" && \
   apt-get update && \
   apt-get install -y \
@@ -30,10 +27,10 @@ RUN \
   fi && \
   mkdir -p \
     /app/duplicati && \
-  duplicati_url=$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${DUPLICATI_RELEASE}" |jq -r '.assets[].browser_download_url' |grep '.zip$' |grep -v signatures) && \
+  DUPLICATI_URL=$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${DUPLICATI_RELEASE}" | jq -r '.assets[].browser_download_url' | grep '.zip$' | grep -v signatures) && \
   curl -o \
     /tmp/duplicati.zip -L \
-    "${duplicati_url}" && \
+    "${DUPLICATI_URL}" && \
   unzip -q /tmp/duplicati.zip -d /app/duplicati && \
   echo "**** cleanup ****" && \
   apt-get clean && \
