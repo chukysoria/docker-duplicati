@@ -17,14 +17,10 @@ RUN \
   echo "**** install packages ****" && \
   apt-get update && \
   apt-get install -y \
-    mono-devel \
-    mono-vbnc \
-    unzip && \
+    mono-devel=6.8.0.105+dfsg-3.2 \
+    mono-vbnc=4.0.1-3 \
+    unzip=6.0-26ubuntu3.1 && \
   echo "**** install duplicati ****" && \
-  if [ -z ${DUPLICATI_RELEASE+x} ]; then \
-    DUPLICATI_RELEASE=$(curl -sX GET "https://api.github.com/repos/duplicati/duplicati/releases" \
-    | jq -r 'first(.[] | select(.tag_name | contains("beta"))) | .tag_name'); \
-  fi && \
   mkdir -p \
     /app/duplicati && \
   DUPLICATI_URL=$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${DUPLICATI_RELEASE}" | jq -r '.assets[].browser_download_url' | grep '.zip$' | grep -v signatures) && \
