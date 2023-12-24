@@ -6,7 +6,7 @@ FROM ${BUILD_FROM}
 # set version label
 ARG BUILD_DATE
 ARG BUILD_VERSION
-ARG BUILD_EXT_RELEASE="v2.0.7.1-2.0.7.1_beta_2023-05-25 "
+ARG BUILD_EXT_RELEASE="v2.0.7.2-2.0.7.2_canary_2023-05-25 "
 LABEL build_version="Chukyserver.io version:- ${BUILD_VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="chukysoria"
 
