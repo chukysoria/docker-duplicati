@@ -41,4 +41,7 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 8200
+
 VOLUME /backups /config /source
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=2m --start-interval=5s --retries=5 CMD ["nc", "-z", "localhost", "8200"]
