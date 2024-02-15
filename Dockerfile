@@ -20,7 +20,7 @@ RUN \
   apt-get install -y \
     mono-devel=6.8.0.105+dfsg-3.2 \
     mono-vbnc=4.0.1-3 \
-    unzip=6.0-26ubuntu3.1 && \
+    unzip=6.0-26ubuntu3.2 && \
   echo "**** install duplicati ****" && \
   mkdir -p \
     /app/duplicati && \
