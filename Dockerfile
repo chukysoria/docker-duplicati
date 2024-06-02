@@ -18,7 +18,7 @@ RUN \
   echo "**** install packages ****" && \
   apt-get update && \
   apt-get install -y \
-    mono-devel=6.8.0.105+dfsg-3.2 \
+    mono-devel=6.8.0.105+dfsg-3.6ubuntu2 \
     mono-vbnc=4.0.1-3 \
     unzip=6.0-26ubuntu3.2 && \
   echo "**** install duplicati ****" && \
