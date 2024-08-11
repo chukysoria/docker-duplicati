@@ -1,6 +1,6 @@
 ---
 image: duplicati
-version: v0.3.5
+version: v0.3.6
 name: Duplicati
 description: "[Duplicati](https://www.duplicati.com/) works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others."
 ext_release: v2.0.8.1-2.0.8.1_beta_2024-05-07
