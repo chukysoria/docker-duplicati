@@ -1,27 +1,40 @@
 # syntax=docker/dockerfile:1@sha256:93bfd3b68c109427185cd78b4779fc82b484b0b7618e36d0f104d4d801e66d25
-ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v0.2.43-jammy@sha256:723e318cb08f68179ec1bf0e7d619e1ebf02da295ecb2890cacdc60eb817c6b5
+ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v0.3.0-noble
 FROM ${BUILD_FROM} 
+
 
 # set version label
 ARG BUILD_DATE
 ARG BUILD_VERSION
-ARG BUILD_EXT_RELEASE="v2.0.8.1-2.0.8.1_beta_2024-05-07"
+ARG BUILD_EXT_RELEASE="v2.1.0.2_beta_2024-11-29"
 LABEL build_version="Chukyserver.io version:- ${BUILD_VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="chukysoria"
 
 # environment settings
-ENV HOME="/config"
-ENV DEBIAN_FRONTEND="noninteractive"
+ARG DEBIAN_FRONTEND="noninteractive"
+ENV HOME="/config" \
+  TMPDIR=/run/duplicati-temp \
+  DUPLICATI__REQUIRE_DB_ENCRYPTION_KEY=true \
+  DUPLICATI__SERVER_DATAFOLDER=/config \
+  DUPLICATI__WEBSERVICE_PORT=8200 \
+  DUPLICATI__WEBSERVICE_INTERFACE=any \
+  DUPLICATI__WEBSERVICE_ALLOWED_HOSTNAMES=*
 
 RUN \
   echo "**** install packages ****" && \
+  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
   apt-get update && \
+  apt-get install -y \
+    libicu74 \
+    ttf-mscorefonts-installer \
+    unzip && \
   echo "**** install duplicati ****" && \
-  DUPLICATI_URL=$(curl -s https://api.github.com/repos/duplicati/duplicati/releases/tags/"${BUILD_EXT_RELEASE}" | jq -r '.assets[].browser_download_url' | grep '.deb$' | grep -v signatures) && \
+  duplicati_url=$(curl -s "https://api.github.com/repos/duplicati/duplicati/releases/tags/${BUILD_EXT_RELEASE}" | jq -r '.assets[].browser_download_url' | grep 'linux-x64-gui.zip$') && \
   curl -o \
-    /tmp/duplicati.deb -L \
-    "${DUPLICATI_URL}" && \
-  apt-get install /tmp/duplicati.deb -y && \
+    /tmp/duplicati.zip -L \
+    "${duplicati_url}" && \
+  unzip -q /tmp/duplicati.zip -d /app && \
+  mv /app/duplicati* /app/duplicati && \
   echo "**** cleanup ****" && \
   apt-get clean && \
   rm -rf \
