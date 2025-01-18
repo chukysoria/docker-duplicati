@@ -2,7 +2,6 @@
 ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v0.3.0-noble
 FROM ${BUILD_FROM} 
 
-
 # set version label
 ARG BUILD_DATE
 ARG BUILD_VERSION
