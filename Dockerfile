@@ -1,12 +1,11 @@
-# syntax=docker/dockerfile:1@sha256:93bfd3b68c109427185cd78b4779fc82b484b0b7618e36d0f104d4d801e66d25
-ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v0.3.0-noble
+# syntax=docker/dockerfile:1@sha256:9857836c9ee4268391bb5b09f9f157f3c91bb15821bb77969642813b0d00518d
+ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v0.3.43-noble@sha256:87a39025a9c67008db85c689e91839c564cabfbad04d3a14c520be7e9cc3d642
 FROM ${BUILD_FROM} 
-
 
 # set version label
 ARG BUILD_DATE
 ARG BUILD_VERSION
-ARG BUILD_EXT_RELEASE="v2.1.0.2_beta_2024-11-29"
+ARG BUILD_EXT_RELEASE="v2.1.0.118_canary_2025-05-12"
 LABEL build_version="Chukyserver.io version:- ${BUILD_VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="chukysoria"
 
