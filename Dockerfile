@@ -27,7 +27,8 @@ RUN \
   apt-get install -y \
     libicu74 \
     ttf-mscorefonts-installer \
-    unzip && \
+    unzip \
+    xz-utils && \
   echo "**** install duplicati ****" && \
   duplicati_url=$(curl -s "https://api.github.com/repos/duplicati/duplicati/releases/tags/${BUILD_EXT_RELEASE}" | jq -r '.assets[].browser_download_url' | grep 'linux-x64-gui.zip$') && \
   curl -o \
