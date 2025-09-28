@@ -1,4 +1,4 @@
 ---
 build_from:
-  x86_64: ghcr.io/chukysoria/baseimage-ubuntu:v0.3.56-noble@sha256:54af30a4ece761fad1193ed7d8f0486bf6589258f2106765940d9faf099d5355
-  armv7: ghcr.io/chukysoria/baseimage-ubuntu:v0.3.56-noble@sha256:54af30a4ece761fad1193ed7d8f0486bf6589258f2106765940d9faf099d5355
+  x86_64: ghcr.io/chukysoria/baseimage-ubuntu:v0.3.57-noble@sha256:4d9bd1df37f7f8d6400553736c9148f6679b6c272936a25463c74088e07f8be8
+  armv7: ghcr.io/chukysoria/baseimage-ubuntu:v0.3.57-noble@sha256:4d9bd1df37f7f8d6400553736c9148f6679b6c272936a25463c74088e07f8be8
