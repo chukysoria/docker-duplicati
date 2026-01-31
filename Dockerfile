@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1@sha256:b6afd42430b15f2d2a4c5a02b919e98a525b785b1aaff16747d2f623364e39b6
-ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v0.3.63-noble@sha256:dce43da8da6d1924418a7b0a658a0acd8ff64c9f4830564b3dccb18793af11dc
+ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v0.3.64-noble@sha256:c484b5f52e0d013408a0e0a6a21bdd1b1bec6a3d32e7c757ef14fd72dba399b6
 FROM ${BUILD_FROM} 
 
 # set version label
