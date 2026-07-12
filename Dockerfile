@@ -1,5 +1,6 @@
+# check=skip=SecretsUsedInArgOrEnv
 # syntax=docker/dockerfile:1@sha256:87999aa3d42bdc6bea60565083ee17e86d1f3339802f543c0d03998580f9cb89
-ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v0.3.71-resolute
+ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v1.0.0-resolute@sha256:8a46a913bb0b33024292a285702f307e9c96c4b9abe4e343ccb2b1a62ec842bf
 FROM ${BUILD_FROM} 
 
 # set version label
@@ -21,11 +22,9 @@ ENV HOME="/config" \
 
 RUN \
   echo "**** install packages ****" && \
-  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
   apt-get update && \
   apt-get install -y \
-    libicu74 \
-    ttf-mscorefonts-installer \
+    libicu78 \
     unzip \
     xz-utils && \
   echo "**** install duplicati ****" && \
