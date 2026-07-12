@@ -22,11 +22,9 @@ ENV HOME="/config" \
 
 RUN \
   echo "**** install packages ****" && \
-  echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
   apt-get update && \
   apt-get install -y \
     libicu78 \
-    ttf-mscorefonts-installer \
     unzip \
     xz-utils && \
   echo "**** install duplicati ****" && \
