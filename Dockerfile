@@ -1,6 +1,6 @@
 # check=skip=SecretsUsedInArgOrEnv
 # syntax=docker/dockerfile:1@sha256:87999aa3d42bdc6bea60565083ee17e86d1f3339802f543c0d03998580f9cb89
-ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v1.0.2-resolute@sha256:ad197e88d4cbe67adeac136a983d96bc6dd267377e5e2c826325a9e8ab64e14f
+ARG BUILD_FROM=ghcr.io/chukysoria/baseimage-ubuntu:v1.0.4-resolute@sha256:984ac6afe383e166e7d51240bb1fb5ea6ee03bd839519d2cb539405f8bf035dd
 FROM ${BUILD_FROM} 
 
 # set version label
